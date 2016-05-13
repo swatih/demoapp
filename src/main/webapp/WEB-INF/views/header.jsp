@@ -59,7 +59,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#"><img      
-           src="${i1}/logo3.jpg"></a>
+           src="${i1}/logo1.jpg" height=170% width=80%></a>
         
       </div> 
       <div id="navbar3" class="navbar-collapse collapse">
