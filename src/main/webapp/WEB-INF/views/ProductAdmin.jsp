@@ -2,9 +2,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
-<html>
+ <html>
 <head>
-    <title>Person Page</title>
+    <title>Admin Page</title>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+
 <h1>
     Add a Product
 </h1>
@@ -42,7 +43,8 @@
         </td>
         <td>
             <form:input path="name" />
-        </td> 
+        </td>
+               <td><form:errors path="name" cssClass="error" cssStyle="color: #ff0000;"/></td> 
     </tr>
     
     <tr>
@@ -53,7 +55,8 @@
         </td>
         <td>
             <form:input path="brand" />
-        </td> 
+        </td>
+               <td><form:errors path="brand" cssClass="error" cssStyle="color: #ff0000;"/></td> 
     </tr>
     
     
@@ -66,6 +69,7 @@
         <td>
             <form:input path="desc" />
         </td> 
+               <td><form:errors path="desc" cssClass="error" cssStyle="color: #ff0000;"/></td>
     </tr>
     
     <tr>
@@ -77,6 +81,7 @@
         <td>
             <form:input path="price" />
         </td> 
+               <td><form:errors path="price" cssClass="error" cssStyle="color: #ff0000;"/></td>
     </tr>
     <tr>
         <td>
@@ -87,6 +92,7 @@
         <td>
             <form:input path="category" />
         </td> 
+               <td><form:errors path="category" cssClass="error" cssStyle="color: #ff0000;"/></td>
     </tr>
     
     <tr>

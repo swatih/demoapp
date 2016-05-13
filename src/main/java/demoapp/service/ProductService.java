@@ -41,7 +41,12 @@ public class ProductService {
         return this.productDAO.getProductById(id);
     }
  
-  
+
+    @Transactional
+    public List<Product> getProductsByCategory(String s) {
+        return this.productDAO.getProductsByCategory(s);
+    }
+ 
     @Transactional
     public void removeProduct(int id) {
         this.productDAO.removeProduct(id);

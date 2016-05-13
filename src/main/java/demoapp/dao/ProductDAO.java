@@ -2,6 +2,7 @@ package demoapp.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -52,6 +53,14 @@ public class ProductDAO {
         Product p = (Product) session.load(Product.class, new Integer(id));
         logger.info("Product loaded successfully, Product details="+p);
         return p;
+    }
+    
+    public List<Product> getProductsByCategory(String ctg) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query q=session.createQuery("from Product where category=:c ");
+        q.setParameter("c",ctg);
+        List<Product> productsList = (List<Product>)q.list();
+        return productsList;
     }
  
   

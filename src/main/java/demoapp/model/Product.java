@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
 
 @Entity
 public class Product {
@@ -12,10 +15,15 @@ public class Product {
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	 @NotEmpty(message="Field can't be blank")
 	private String name;
+	 @NotEmpty(message="Field can't be blank")
 	private String desc;
+	 @NotEmpty(message="Field can't be blank")
 	private String brand;
+	 @Range(min=1, message="Enter the correct price") 
 	private int price;
+	@NotEmpty(message="Field can't be blank")
 	private String category;
 	public int getId() {
 		return id;

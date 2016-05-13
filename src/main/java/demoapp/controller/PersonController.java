@@ -1,9 +1,12 @@
 package demoapp.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import demoapp.model.Person;
 import demoapp.service.PersonService;
 
-
+@Controller
 public class PersonController {
      
-    /*private PersonService personService;
+    private PersonService personService;
      
-    @Autowired(required=true)
+    @Autowired
     @Qualifier(value="personService")
     public void setPersonService(PersonService ps){
         this.personService = ps;
@@ -32,8 +35,11 @@ public class PersonController {
      
     //For add and update person both
     @RequestMapping(value= "/person/add", method = RequestMethod.POST)
-    public String addPerson(@ModelAttribute("person") Person p){
-         
+    public String addPerson(@Valid @ModelAttribute("person") Person p,BindingResult res,Model model){
+        if(res.hasErrors()) {
+            return "person";
+        }
+	 
         if(p.getId() == 0){
             //new person, add it
             this.personService.addPerson(p);
@@ -41,11 +47,12 @@ public class PersonController {
             //existing person, call update
             this.personService.updatePerson(p);
         }
-         
-        return "redirect:/persons";
+        
+        return "success";
+        
          
     }
-     
+  /*   
     @RequestMapping("/remove/{id}")
     public String removePerson(@PathVariable("id") int id){
          

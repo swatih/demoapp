@@ -1,9 +1,12 @@
 package demoapp.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +36,13 @@ public class ProductController {
      
     //For add and update product both
     @RequestMapping(value= "/product/add", method = RequestMethod.POST)
-    public String addProduct(@ModelAttribute("product") Product p){
-         
+    public String addProduct(@Valid @ModelAttribute("product") Product p,BindingResult res,Model model){
+    	if(res.hasErrors()) {
+    	
+    		model.addAttribute("listProducts", this.productService.listProducts());
+            return "ProductAdmin";
+        }
+	    
         if(p.getId() == 0){
             //new product, add it
             this.productService.addProduct(p);
