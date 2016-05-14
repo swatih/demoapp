@@ -14,10 +14,25 @@ public class Person {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
+    private int enabled=1;
 	@NotEmpty(message="Field can't be blank")
     private String name;
 	@NotEmpty(message="Field can't be blank")
 	private String country;
+	@NotEmpty(message="Field can't be blank")
+	private String email;
+	@Length(min = 8, message = "The field must be at least 5 characters")
+	private String password;
+    
+	public int getEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+
     public String getName() {
 		return name;
 	}
@@ -37,11 +52,7 @@ public class Person {
 		this.country = country;
 	}
 
-	@NotEmpty(message="Field can't be blank")
-	private String email;
-	@Length(min = 8, message = "The field must be at least 5 characters")
-    private String password;
-    
+	
     
      public int getId() {
 		return id;

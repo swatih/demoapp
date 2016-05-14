@@ -14,7 +14,6 @@
 <script type="text/javascript" src="${b1}/js/bootstrap.min.js"></script>
 
 
-
 <style>
 .navbar {
     background-color: #000000;

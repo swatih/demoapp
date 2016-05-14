@@ -94,6 +94,13 @@
         </td> 
                <td><form:errors path="category" cssClass="error" cssStyle="color: #ff0000;"/></td>
     </tr>
+    <tr>
+    <td colspan="2">
+    <label class="col-md-3 control-lable" for="file">Upload a file</label>
+                    <div class="col-md-7">
+                        <form:input type="file" path="file" id="file" class="form-control input-sm"/>
+                       </div></td></tr>
+           
     
     <tr>
         <td colspan="2">

@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Entity
@@ -25,6 +27,8 @@ public class Product {
 	private int price;
 	@NotEmpty(message="Field can't be blank")
 	private String category;
+	@Transient
+	MultipartFile file;
 	public int getId() {
 		return id;
 	}
@@ -51,6 +55,12 @@ public class Product {
 	}
 	public int getPrice() {
 		return price;
+	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	public void setPrice(int price) {
 		this.price = price;
